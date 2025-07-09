@@ -67,6 +67,11 @@ public class ArrayList {
     public boolean resize(int size) {
         Object[] newArr = new Object[size];
         System.arraycopy(this.arr, 0, newArr, 0, this.size);
+
+        // 清空源数组防止内存泄漏
+        for(int i = 0; i < this.size; i++)
+            this.arr[i] = null;
+
         this.arr = newArr;
         this.capacity = size;
 
